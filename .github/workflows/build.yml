@@ -2,7 +2,7 @@ name: Build
 on: [push]
 
 jobs:
-  build:
+  Build-and-Deploy:
     name: Build 11ty
     runs-on: ubuntu-latest
     steps:
@@ -10,10 +10,6 @@ jobs:
       - uses: Adzz/jest_test_action@v1.0.0
         with:
           command: build
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v2.1.0
         with:
           fetch-depth: 2
