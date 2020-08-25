@@ -3,15 +3,25 @@ on: [push]
 
 jobs:
   Build-and-Deploy:
-    name: Build 11ty
+    name: Build And Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 2
 
-      - name: checkout code
-        run: yarn build
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Build Project
+        run: |
+          yarn
+          yarn run build
+
+      - name: List output files
+        run: ls
 
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
