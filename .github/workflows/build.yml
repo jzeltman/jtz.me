@@ -10,3 +10,17 @@ jobs:
       - uses: Adzz/jest_test_action@v1.0.0
         with:
           command: build
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+        with:
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ftp.joshuazeltman.com
+          ftp-username: jtz-admin-ftp@jtz.me
+          ftp-password: ${{ secrets.JTZ_ADMIN_FTP }}
+          git-ftp-args: --dry-run
