@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
-    <title>
-      {% block title %}Does it work?{% endblock %}
-    </title>
+    <title>{{title}}</title>
     <meta charset="UTF-8"/>
     {% if description %}
       <meta name="description" content="{{description}}"/>
@@ -11,12 +9,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
     <link rel="stylesheet" href="/style.css?v={% version %}"/>
-    {% block head %}{% endblock %}
-    <script src="/js/alpine.js?v={% version %}"></script>
+    {%- block head %}{%- endblock %}
   </head>
-  <body>
-    {% block content %}
-      {{ content | safe }}
-    {% endblock %}
+  <body class="flex flex-col min-h-full">
+    {% include "header.njk" %}
+    <main class="w-11/12 max-w-4xl flex-1 mx-auto">
+      {% if title %}
+        <h1 class="text-2xl text-gray-700 mb-4 font-bold text-center">{{title}}</h1>
+      {% endif %}
+      {% block content %}
+        {{ content | safe }}
+      {% endblock %}
+    </main>
+    {% include "footer.njk" %}
+    <script src="/js/alpine.js?v={% version %}"></script>
   </body>
 </html>
