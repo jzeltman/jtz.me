@@ -29,5 +29,4 @@ jobs:
           ftp-server: ftp.joshuazeltman.com
           ftp-username: jtz-admin-ftp@jtz.me
           ftp-password: ${{ secrets.JTZ_ADMIN_FTP }}
-          git-ftp-args: --dry-run
           local-dir: _site
