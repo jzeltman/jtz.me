@@ -1,0 +1,15 @@
+_includes/
+_tmp/
+.github/
+assets/
+node_modules/
+posts/
+styles/
+.eleventy.js
+.eleventyignore
+index.njk
+LICENSE
+package.json
+postcss.config
+README.md
+yarn.lock
